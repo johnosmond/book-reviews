@@ -2,10 +2,10 @@
 
 <p align="center">
     <a href="https://prodbdevelopers.com/" target="_blank" rel="noopener noreferrer">Pro DB Developers</a> | 
-    <a href="https://www.youtube.com/@prodbdevelopers" target="_blank" rel="noopener noreferrer">YouTube Channel |
-    <a href="https://www.linkedin.com/company/prodbdevelopers/" target="_blank" rel="noopener noreferrer">LinkedIn |
-    <a href="https://www.facebook.com/prodbdevelopers" target="_blank" rel="noopener noreferrer">Facebook |
-    <a href="https://github.com/johnosmond/" target="_blank" rel="noopener noreferrer">GitHub
+    <a href="https://www.youtube.com/@prodbdevelopers" target="_blank" rel="noopener noreferrer">YouTube Channel</a> |
+    <a href="https://www.linkedin.com/company/prodbdevelopers/" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
+    <a href="https://www.facebook.com/prodbdevelopers" target="_blank" rel="noopener noreferrer">Facebook</a> |
+    <a href="https://github.com/johnosmond/" target="_blank" rel="noopener noreferrer">GitHub</a>
 </p>
 
 ## About the Book Reviews Demo Project
