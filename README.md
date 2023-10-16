@@ -1,10 +1,11 @@
 <h1 align="center">Book Reviews Demo Project</h1>
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+    <a href="https://prodbdevelopers.com/" target="_blank" rel="noopener noreferrer">Pro DB Developers</a> | 
+    <a href="https://www.youtube.com/@prodbdevelopers" target="_blank" rel="noopener noreferrer">YouTube Channel |
+    <a href="https://www.linkedin.com/company/prodbdevelopers/" target="_blank" rel="noopener noreferrer">LinkedIn |
+    <a href="https://www.facebook.com/prodbdevelopers" target="_blank" rel="noopener noreferrer">Facebook |
+    <a href="https://github.com/johnosmond/" target="_blank" rel="noopener noreferrer">GitHub
 </p>
 
 ## About the Book Reviews Demo Project
