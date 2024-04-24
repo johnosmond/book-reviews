@@ -69,12 +69,6 @@ class Book extends Model
         }
     }
 
-    // public function scopeMinRating(Builder $query, float $rating): Builder
-    // {
-    //     return $query->withAvg('reviews', 'rating')
-    //         ->where('reviews_rating_avg', '>=', $rating);
-    // }
-
     public function scopePopularLastMonth(Builder $query): Builder
     {
         return $query->popular(now()->subMonth(), now())
