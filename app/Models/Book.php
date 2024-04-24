@@ -56,4 +56,32 @@ class Book extends Model
         return $query->withAvg('reviews', 'rating')
             ->where('reviews_rating_avg', '>=', $rating);
     }
+
+    public function scopePopularLastMonth(Builder $query): Builder
+    {
+        return $query->popular(now()->subMonth(), now())
+            ->highestRated(now()->subMonth(), now())
+            ->minReviewsCount(2);
+    }
+
+    public function scopePopularLast6Months(Builder $query): Builder
+    {
+        return $query->popular(now()->subMonths(6), now())
+            ->highestRated(now()->subMonths(6), now())
+            ->minReviewsCount(5);
+    }
+
+    public function scopeHighestRatedLastMonth(Builder $query): Builder
+    {
+        return $query->highestRated(now()->subMonth(), now())
+            ->popular(now()->subMonth(), now())
+            ->minReviewsCount(2);
+    }
+
+    public function scopeHighestRatedLast6Months(Builder $query): Builder
+    {
+        return $query->highestRated(now()->subMonths(6), now())
+            ->popular(now()->subMonths(6), now())
+            ->minReviewsCount(5);
+    }
 }
