@@ -56,4 +56,7 @@
             <a href="{{ route('books.index') }}" class="reset-link">Reset criteria</a>
         </div>
     @endforelse
+
+    {{ $books->links() }}
+
 @endsection
