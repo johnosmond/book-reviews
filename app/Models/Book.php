@@ -15,9 +15,9 @@ class Book extends Model
         return $this->hasMany(Review::class);
     }
 
-    public function scopeTitle(Builder $query, string $title): Builder
+    public function scopeSearch(Builder $query, string $search): Builder
     {
-        return $query->where('title', 'LIKE', '%' . $title . '%');
+        return $query->where('title', 'LIKE', '%' . $search . '%');
     }
 
     public function scopePopular(Builder $query, $from = null, $to = null): Builder
