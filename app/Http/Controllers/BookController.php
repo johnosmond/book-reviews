@@ -21,12 +21,11 @@ class BookController extends Controller
         );
 
         $books = match ($filter) {
-            'latest' => $books->latest(),
             'popular_last_month' => $books->popularLastMonth(),
-            'popular_last_6month6' => $books->popularLast6Months(),
+            'popular_last_6months' => $books->popularLast6Months(),
             'highest_rated_last_month' => $books->highestRatedLastMonth(),
             'highest_rated_last_6months' => $books->highestRatedLast6Months(),
-            default => $books->latest(),
+            default => $books->latest()->withAvgRating()->withReviewsCount(),
         };
 
         $books = $books->get();
