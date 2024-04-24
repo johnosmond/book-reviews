@@ -53,7 +53,8 @@ class Book extends Model
     public function scopeMinReviewsCount(Builder $query, int $count): Builder
     {
         // aggregate function on scope method above
-        return $query->where('reviews_count', '>=', $count);
+        // if switching to SQLite, change 'having' to 'where'
+        return $query->having('reviews_count', '>=', $count);
     }
 
     private function dateRangeFilter(Builder $query, $from = null, $to = null)

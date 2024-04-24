@@ -7,7 +7,7 @@
         <input type="text" name="search" class="input h-10" placeholder="Search by Title" value="{{ request('search') }}">
         <input type="hidden" name="filter" value="{{ request('filter') }}">
         <button type="submit" class="btn h-10">Search</button>
-        <a href="{{ route('books.index', 'filter=latest') }}" class="btn h-10">Reset</a>
+        <a href="{{ route('books.index') }}" class="btn h-10">Reset</a>
     </form>
 
     <div class="filter-container mb-4 flex">
