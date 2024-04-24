@@ -5,9 +5,29 @@
 
     <form method="GET" action="{{ route('books.index') }}" class="mb-4 flex items-center space-x-2">
         <input type="text" name="search" class="input h-10" placeholder="Search by Title" value="{{ request('search') }}">
+        <input type="hidden" name="filter" value="{{ request('filter') }}">
         <button type="submit" class="btn h-10">Search</button>
-        <a href="{{ route('books.index') }}" class="btn h-10">Reset</a>
+        <a href="{{ route('books.index', 'filter=latest') }}" class="btn h-10">Reset</a>
     </form>
+
+    <div class="filter-container mb-4 flex">
+        @php
+            $filters = [
+                'latest' => 'Latest',
+                'popular_last_month' => 'Popular Last Month',
+                'popular_last_6months' => 'Popular Last 6 Months',
+                'highest_rated_last_month' => 'Highest Rated Last Month',
+                'highest_rated_last_6months' => 'Highest Rated Last 6 Months',
+            ];
+        @endphp
+
+        @foreach ($filters as $key => $label)
+            <a href="{{ route('books.index', [...request()->query(), 'filter' => $key]) }}"
+                class="{{ request('filter') === $key || (request('filter') === null && $key === 'latest') ? 'filter-item-active' : 'filter-item' }}">
+                {{ $label }}
+            </a>
+        @endforeach
+    </div>
 
     @forelse ($books as $book)
         <ul>
@@ -23,7 +43,7 @@
                                 {{ number_format($book->reviews_avg_rating, 1) }}
                             </div>
                             <div class="book-review-count">
-                                out of {{ $book->reveiws_count }} {{ Str::plural('review', $book->reveiws_count) }}
+                                out of {{ $book->reviews_count }} {{ Str::plural('review', $book->reviews_count) }}
                             </div>
                         </div>
                     </div>
