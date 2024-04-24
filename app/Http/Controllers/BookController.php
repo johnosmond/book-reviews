@@ -28,12 +28,12 @@ class BookController extends Controller
             default => $books->latest()->withAvgRating()->withReviewsCount(),
         };
 
-        // $books = $books->paginate(5);
+        $books = $books->paginate(10);
 
         $page = request()->get('page', 1);
-        $cacheKey = "books.page.{$page}" . $filter . ':' . $search;
+        $cacheKey = "books.page.{$page}" . $filter . '.' . $search;
 
-        $books = cache()->remember($cacheKey, 3600, fn () => $books->paginate(10));
+        // $books = cache()->remember($cacheKey, 3600, fn () => $books->paginate(10));
 
         return view('books.index', ['books' => $books]);
     }
@@ -57,29 +57,36 @@ class BookController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(int $book_id)
+    // public function show(int $book_id)
+    // {
+    //     // we have to use $book_id instead route model binding
+    //     // because we want to cache the query
+
+    //     // test the chache performance
+    //     $begin = hrtime(true);
+
+    //     $cacheKey = 'book:' . $book_id;
+
+    //     $book = cache()->remember(
+    //         $cacheKey,
+    //         3600,
+    //         fn () => Book::with([
+    //             'reviews' => fn ($query) => $query->latest()
+    //         ])->withAvgRating()->withReviewsCount()->findOrFail($book_id)
+    //     );
+
+    //     // test the chache performance
+    //     $end = hrtime(true);
+
+    //     // $book->load(['reviews' => fn ($query) => $query->latest()]);
+    //     return view('books.show', ['book' => $book, 'begin' => $begin, 'end' => $end]);
+    // }
+    public function show(Book $book)
     {
-        // we have to use $book_id instead route model binding
-        // because we want to cache the query
-
-        // test the chache performance
-        $begin = hrtime(true);
-
-        $cacheKey = 'book:' . $book_id;
-
-        $book = cache()->remember(
-            $cacheKey,
-            3600,
-            fn () => Book::with([
-                'reviews' => fn ($query) => $query->latest()
-            ])->withAvgRating()->withReviewsCount()->findOrFail($book_id)
-        );
-
-        // test the chache performance
-        $end = hrtime(true);
-
-        // $book->load(['reviews' => fn ($query) => $query->latest()]);
-        return view('books.show', ['book' => $book, 'begin' => $begin, 'end' => $end]);
+        $book = Book::where('id', $book->id)
+            ->with(['reviews' => fn ($query) => $query->latest()])
+            ->withAvgRating()->withReviewsCount()->firstOrFail();
+        return view('books.show', ['book' => $book]);
     }
 
     /**
