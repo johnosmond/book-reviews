@@ -16,12 +16,14 @@ class ReviewFactory extends Factory
      */
     public function definition(): array
     {
+        $createdAt = $this->faker->dateTimeBetween('-2 years');
+
         return [
             'book_id' => null,
             'review' => $this->faker->paragraph,
             'rating' => $this->faker->numberBetween(1, 5),
-            'created_at' => $this->faker->dateTimeBetween('-2 years'),
-            'updated_at' => $this->faker->dateTimeBetween('created_at', 'now'),
+            'created_at' => $createdAt,
+            'updated_at' => $this->faker->dateTimeBetween($createdAt, 'now'),
         ];
     }
 
