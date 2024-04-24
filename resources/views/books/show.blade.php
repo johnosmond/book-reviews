@@ -38,4 +38,7 @@
             </div>
         @endforelse
     </div>
+    {{ $begin }}<br>
+    {{ $end}}<br>
+    {{ $end - $begin }}
 @endsection
