@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use Illuminate\Http\Request;
 
-
 class ReviewController extends Controller
 {
     public function create(Book $book)
