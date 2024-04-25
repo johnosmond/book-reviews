@@ -8,11 +8,6 @@ use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('throttle:reviews')->only('store');
-    }
-
     public function create(Book $book)
     {
         return view('books.reviews.create', compact('book'));
